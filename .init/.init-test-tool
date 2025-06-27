@@ -1,0 +1,4 @@
+{
+    "command": "npm run test",
+    "working_directory": "/home/kavia/workspace/code-generation/reactcarrace-93938-57e7d378/car_game_frontend"
+}
