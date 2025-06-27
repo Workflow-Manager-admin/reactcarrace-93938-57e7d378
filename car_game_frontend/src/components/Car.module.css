@@ -1,0 +1,24 @@
+.car {
+  position: absolute;
+  background: linear-gradient(135deg, var(--primary) 80%, var(--accent) 100%);
+  border: 3px solid var(--accent);
+  border-radius: 12px 12px 16px 16px;
+  box-shadow: 0 2px 18px 1px rgba(1, 111, 228, 0.08);
+  transition: left 0.1s cubic-bezier(0.4, 0.9, 0.2, 1);
+  /* Simple car features (pseudo-wheels/stripe) */
+}
+.car::before, .car::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #222831;
+  border-radius: 50%;
+  bottom: -8px;
+}
+.car::before {
+  left: 6px;
+}
+.car::after {
+  right: 6px;
+}

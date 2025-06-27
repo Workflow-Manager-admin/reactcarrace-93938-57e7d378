@@ -1,0 +1,57 @@
+.scorebar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 16px 24px;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 8px rgba(1, 111, 228, 0.05);
+  font-size: 1.1rem;
+  font-weight: 500;
+  gap: 12px;
+}
+.scorebar-section {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.score-label {
+  color: var(--primary);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.score-value {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1.15em;
+  min-width: 2.2em;
+  text-align: left;
+}
+.status {
+  font-weight: 700;
+  border-radius: 6px;
+  padding: 4px 14px;
+  font-size: 1em;
+  letter-spacing: 0.015em;
+  background: var(--border-color);
+  color: var(--text-secondary);
+}
+.status-running {
+  background: #e2f3ff;
+  color: var(--primary);
+}
+.status-ready {
+  background: #f7fafd;
+  color: var(--text-primary);
+}
+.status-paused {
+  background: #ffecd2;
+  color: #c68400;
+}
+.status-gameover {
+  background: #ffeaea;
+  color: #c70000;
+}

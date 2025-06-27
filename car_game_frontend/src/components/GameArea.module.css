@@ -1,0 +1,13 @@
+.gameArea {
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: 18px;
+  box-shadow: 0 6px 40px 0 rgba(1, 111, 228, 0.06);
+  width: 100%;
+  aspect-ratio: 10/16;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-bottom: 32px;
+  position: relative;
+}
