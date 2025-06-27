@@ -33,11 +33,20 @@
 .status {
   font-weight: 700;
   border-radius: 6px;
-  padding: 4px 14px;
+  padding: 4px 16px;
   font-size: 1em;
   letter-spacing: 0.015em;
   background: var(--border-color);
   color: var(--text-secondary);
+  transition: background .28s, color .2s;
+  box-shadow: 0 1px 5px 0 #016fe411;
+  user-select: text;
+}
+.status:focus, .status:hover {
+  outline: 2px solid var(--primary);
+  background: #fff;
+  box-shadow: 0 2px 9px #016fe422;
+  color: var(--primary);
 }
 .status-running {
   background: #e2f3ff;

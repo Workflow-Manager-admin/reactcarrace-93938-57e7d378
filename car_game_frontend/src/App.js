@@ -5,6 +5,7 @@ import './App.css';
 import GameArea from './components/GameArea';
 import Controls from './components/Controls';
 import ScoreStatus from './components/ScoreStatus';
+import FadeSlideIn from './components/FadeSlideIn';
 
 /**
  * PUBLIC_INTERFACE
@@ -264,7 +265,7 @@ function App() {
   return (
     <div className="App">
       <header className="header">
-        <div className="header-title">🚗 Car Game</div>
+        <div className="header-title" tabIndex={-1}>🚗 Car Game</div>
         <Controls
           onStart={handleStart}
           onPause={handlePause}
@@ -280,7 +281,10 @@ function App() {
         </button>
       </header>
       <main className="main-content" ref={mainRef} tabIndex={0}>
-        <ScoreStatus score={statusScore} status={gameStatus} />
+        {/* Score/status bar with transition for a polished UI */}
+        <FadeSlideIn show={!!gameStatus} duration={340} slideY={22}>
+          <ScoreStatus score={statusScore} status={gameStatus} />
+        </FadeSlideIn>
         <GameArea
           carPosition={carPosition}
           areaWidth={areaWidth}
@@ -288,19 +292,48 @@ function App() {
           obstacles={obstacles}
           onCarMove={handleCarMove}
         />
-        {gameStatus === 'Game Over' && (
-          <div style={{
-            position: 'absolute', left: '50%', top: '59%', width: '330px', transform: 'translate(-50%,0)',
-            background: 'rgba(255,255,255,0.95)', color: '#d00', border: '2px solid #c70000',
-            borderRadius: 15, textAlign: 'center', fontSize: '1.5rem', fontWeight: 600,
-            padding: 18, pointerEvents: 'none', zIndex: 100,
-            boxShadow: '0 6px 40px 0 rgba(200,0,0,0.06)'
-          }}>
-            <div>🚩 <span style={{color:'#d00',fontWeight:800}}>Game Over!</span></div>
-            <div style={{color:'#016fe4',marginTop:'9px',fontSize:'1.06em'}}>Score: {lastScore}</div>
-            <div style={{fontSize:'0.92em',color:'#343A40',marginTop:'7px'}}>Press <span style={{ color:'#E87A41', fontWeight:600 }}>Reset</span> to play again</div>
+        {/* Animated Game Over state overlay */}
+        <FadeSlideIn show={gameStatus === 'Game Over'} duration={460} slideY={48}>
+          <div
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '59%',
+              width: '330px',
+              transform: 'translate(-50%,0)',
+              background: 'rgba(255,255,255,0.97)',
+              color: '#d00',
+              border: '2px solid #c70000',
+              borderRadius: 15,
+              textAlign: 'center',
+              fontSize: '1.5rem',
+              fontWeight: 600,
+              padding: 18,
+              pointerEvents: 'none',
+              zIndex: 100,
+              boxShadow: '0 8px 40px 0 rgba(200, 0, 0, 0.09)',
+              transition: 'background 0.25s, color 0.2s'
+            }}
+            aria-live="assertive"
+            role="status"
+          >
+            <div>🚩 <span style={{ color: '#d00', fontWeight: 800 }}>Game Over!</span></div>
+            <div style={{
+              color: '#016fe4',
+              marginTop: '9px',
+              fontSize: '1.06em',
+              textShadow: '0 1px 0px #fff'
+            }}>Score: {lastScore}</div>
+            <div style={{
+              fontSize: '0.95em',
+              color: '#343A40',
+              marginTop: '8px',
+              letterSpacing: '0.02em'
+            }}>
+              Press <span style={{ color: '#E87A41', fontWeight: 600 }}>Reset</span> to play again
+            </div>
           </div>
-        )}
+        </FadeSlideIn>
       </main>
     </div>
   );
